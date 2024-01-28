@@ -1,3 +1,13 @@
+/*
+Name : Waliullah
+ID : 223015026
+Section : 223(EA)
+Course Name : Data Structure Lab
+Course Code : CSE - 106
+Department : Computer Science Engineering
+Project Name : Online Exam Management System
+*/
+
 #include <iostream>
 #include <fstream>
 using namespace std;
@@ -27,23 +37,28 @@ public:
     }
 };
 
+
 // add or create questions functions
 void addQuestion(Question *&head, string qText, string optA, string optB, string optC, string optD, char correctOpt)
 {
-    Question *newQuestion = new Question(qText, optA, optB, optC, optD, correctOpt);
+    Question *newQuestion = new Question(qText, optA, optB, optC, optD, correctOpt); // create a new node
     newQuestion->next = head;
     head = newQuestion;
 }
 
+
 // show the question function 
 void displayQuestions(Question *head)
 {
+    // error handling this condition
     if (head == NULL)
     {
         cout << endl
              << "Question list is empty." << endl;
         return;
     }
+
+    // temp node created 
     Question *current = head;
     while (current != NULL)
     {
@@ -58,6 +73,7 @@ void displayQuestions(Question *head)
         current = current->next;
     }
 }
+
 
 // count the the questions 
 int getCount(Question *head)
@@ -76,6 +92,7 @@ int getCount(Question *head)
 // paticipate exam create questions 
 void takeExam(Question *&head)
 {
+    // error handling this condition
     if (head == NULL)
     {
         cout << endl
@@ -137,6 +154,7 @@ void takeExam(Question *&head)
 // delete the created questions 
 void deleteQuestion(Question *&head, int pos)
 {
+    // error handling this condition
     if (head == NULL)
     {
         cout << endl
@@ -156,6 +174,7 @@ void deleteQuestion(Question *&head, int pos)
         return;
     }
 
+    // temp node created
     Question *temp = head;
     for (int i = 0; i < pos - 1; i++)
     {
@@ -169,9 +188,10 @@ void deleteQuestion(Question *&head, int pos)
         }
     }
 
+    // delete node created
     Question *deleteQuestion = temp->next;
     temp->next = temp->next->next;
-    delete deleteQuestion;
+    delete deleteQuestion; // delete node
     cout << endl
          << "Deleted from position " << pos << endl
          << endl;
@@ -253,6 +273,7 @@ void loadQuestionsFromFile(Question *&head, const string &filename)
 // main function start here 
 int main()
 {
+    // node created 
     Question *head = NULL;
 
     while (true)
